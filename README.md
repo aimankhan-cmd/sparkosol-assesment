@@ -18,7 +18,9 @@ To Retrieve the current temperature
       requests
 
 Docs should be generated using OpenAPI those files names below
+      
       openapi-yaml.yaml
+      
       openapicode-json.json
       
 JWT Authentication
