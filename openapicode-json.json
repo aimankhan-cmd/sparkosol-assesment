@@ -1,0 +1,208 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Backend Assessment for Aiman - OpenAPI 3.0",
+    "description": "Build a REST API application using a fast API that displays the current temperature at a given location.",
+    "contact": {
+      "email": "aimankhanji123@gmail.com"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8081/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Welcome index page",
+      "externalDocs": {
+        "description": "Base root",
+        "url": "http://127.0.0.1:8081/"
+      }
+    },
+    {
+      "name": "User Signup to get token",
+      "description": "Must Signup to get jwt-user-token and copy that"
+    },
+    {
+      "name": "Check City Temperature",
+      "description": "Requried (jwt-authenticate)"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Welcome index page"
+        ],
+        "summary": "Welcome index page",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "tags": [
+          "User Signup to get token"
+        ],
+        "summary": "Add a new User to  get jwt token",
+        "description": "Add a new User to  get jwt token",
+        "operationId": "addUser",
+        "requestBody": {
+          "description": "Add a new User to  get jwt token",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/temperature/{city}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Check City Temperature"
+        ],
+        "summary": "Find Temperature by City",
+        "description": "Returns a Temperature",
+        "operationId": "city",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "description": "City to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/City"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/City"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "City": {
+        "type": "object",
+        "properties": {
+          "City": {
+            "type": "string",
+            "example": "lahore"
+          },
+          "mintemp": {
+            "type": "string",
+            "example": 17
+          },
+          "maxtemp": {
+            "type": "string",
+            "example": 18
+          }
+        },
+        "xml": {
+          "name": "City"
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string",
+            "example": "Aiman dev Task assessment"
+          },
+          "email": {
+            "type": "string",
+            "example": "Aimankhanji123@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "password123"
+          }
+        },
+        "xml": {
+          "name": "User"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
