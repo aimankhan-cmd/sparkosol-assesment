@@ -32,7 +32,7 @@ steps :
 
 ### api.py contains all routes and their defination
 
-###  #0969DA.env contains secret and algorthim values 
+### .env contains secret and algorthim values 
 
 ### for encode and decode all functions are in auth/auth_handler.py
 
