@@ -18,8 +18,8 @@ To Retrieve the current temperature
       requests
 
 Docs should be generated using OpenAPI those files names below
-      #openapi-yaml.yaml
-      #openapicode-json.json
+      openapi-yaml.yaml
+      openapicode-json.json
       
 JWT Authentication
 you can only check temperature if you create user and after creation toen provided copy that and give to authorize function 
