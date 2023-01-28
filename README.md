@@ -14,7 +14,7 @@ To Retrieve the current temperature
 ### Requirements for temperatre:
       openweathermap 
 
-### libraries for temperature
+### Libraries for temperature
       requests
 
 Docs should be generated using OpenAPI those files names below
