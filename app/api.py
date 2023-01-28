@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Body, Depends
 
-from app.model import PostSchema, UserSchema
+from app.model import UserSchema
 from app.auth.auth_bearer import JWTBearer
 from app.auth.auth_handler import signJWT
 
